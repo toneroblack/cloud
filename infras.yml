@@ -16,4 +16,16 @@ Resources:
             Tags:
                 - Key: name
                   Value: !Ref EnvironmentName
-      
+
+    InternetGateway:
+        Type: AWS::EC2::InternetGateway
+        Properties:
+            Tags:
+                - Key: name
+                  Value: !Ref EnvironmentName
+
+    InternetGatewayAttachment:
+        Type: AWS::EC2::VPCGatewayAttachment
+        Properties:
+            InternetGatewayID: !Ref InternetGateway
+            VpcID: !Ref VPC
