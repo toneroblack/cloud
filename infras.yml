@@ -1,0 +1,19 @@
+Parameters:
+    EnvironmentName:
+        Description: This is used to create the environment
+        Type: String
+
+    VpcCIDR:
+        Description: To create the VPC cidr(notation)
+        Type: String
+        Default: 10.0.0.0/16
+Resources:
+
+    VPC:
+        Type: AWS::EC2::VPC
+        Properties:
+            CidrBlock: !Ref VpcCIDR
+            Tags:
+                - Key: name
+                  Value: !Ref EnvironmentName
+      
